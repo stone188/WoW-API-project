@@ -3,6 +3,7 @@ import json
 import sys
 
 WoW_api = 'z6abfbjjhqccvejttjtxu9hw5m7w6fbc'
+Logs_api = '46ed538fbf48dfc33349db5d26eb5441'
 
 def guild_search(x, y):
 	api_key = WoW_api
@@ -20,7 +21,9 @@ def guild_search(x, y):
 	print("|guild) the entire length of the list may be undiserable.               |")
 	print(" -----------------------------------------------------------------------")
 	
-	alphabetical = input("Would you like to parse the list alphabetically? [y/n]")
+	menue_option = input("1. Specify player search by alphabetical catagory" 
+						 "2. Specify player search by ilvl"
+						 "3. Specify player search by )
 	
 	if alphabetical == 'y':
 		letter = input("Please enter a letter to jump to: ")
