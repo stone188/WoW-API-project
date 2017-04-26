@@ -22,14 +22,21 @@ def guild_search(x, y):
 	print(" -----------------------------------------------------------------------")
 	
 	menue_option = input("1. Specify player search by alphabetical catagory" 
-						 "2. Specify player search by ilvl"
-						 "3. Specify player search by )
+						 "2. Specify player search by lvl"
+						 "3. Specify player search by ilvl" )
 	
-	if alphabetical == 'y':
+	if menue_option == 1:
 		letter = input("Please enter a letter to jump to: ")
 		for item in data['members']:
 			player_result = item['character']['name']
 			if player_result.startswith(letter.upper()):
+				print(item['character']['name'] + " " + item['character']['realm'])
+				
+	elif menue_option == 2:
+		lvl = input("Please specify a level: ")
+		for item in data['members']:
+			player_result = item['character']['level']
+			if player_result == lvl:
 				print(item['character']['name'] + " " + item['character']['realm'])
 				
 	else:
