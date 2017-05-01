@@ -93,6 +93,32 @@ def guild_search(x, y):
 	data = json.load(json_obj)
 	
 	return data
+	
+def wowlogs_search(x, y, difficulty, role, encounter, parses)
+	api_key = Logs_api
+	region = "US"
+	limit = "5000"
+	rank_q = "rankings/encounter/"
+	parse_q = "parses/character/"
+	url = "https://www.warcraftlogs.com:443/v1/"
+	x = x.replace(' ', '%20')
+	y = y.replace(' ', '%20')
+	if parses == 1 and role != "":
+		final_url = url + parse_q + x + "/" + y + region + "?encounter=" + encounter + "&api_key=" + api_key
+		
+	elif role != "" and parses != 1:
+		final_url = url + rank_q + encounter + "?metric=" + role + "&difficulty=" + difficulty + "&limit=" + limit + "&guild=" + x + "&server=" + y + "&region=" + region + "&api_key=" + api_key
+	
+	elif role == "" and parses != 1:
+		final_url = url + rank_q + encounter + "?difficulty=" + difficulty + "&limit=" + limit + "&guild=" + x + "&server=" + y + "&region=" + region + "&api_key=" + api_key
+	
+	else:
+		print("OPERATION FAILURE: URL not found")
+		
+	json_obj = urlopen(final_url)
+	data = json.load(json_obj)
+	
+	return data
 
 def player_search(x, y):
 	data = guild_search(x, y)
@@ -104,12 +130,13 @@ def player_search(x, y):
 	print("|guild) the entire length of the list may be undiserable.               |")
 	print(" -----------------------------------------------------------------------")
 	
-	menu_option = input(" ------------------------------------------------- "
-						 "\n|1. Specify player search by alphabetical catagory|" 
-						 "\n|2. Specify player search by lvl                 |"
-						 "\n|3. Specify player search by class                |"
-						 "\n|4. No specifications                             |"
-						 "\n ------------------------------------------------- \n")
+	menu_option = input(" -------------------------------------------------- "
+						 "\n|1. Specify player search by alphabetical catagory |" 
+						 "\n|2. Specify player search by lvl                   |"
+						 "\n|3. Specify player search by class                 |"
+						 "\n|4. Specify player by ilvl                         |"
+						 "\n|4. No specifications                              |"
+						 "\n --------------------------------------------------\n")
 	
 	if menu_option == '1':
 		letter = input("\nPlease enter a letter to jump to: ")
@@ -145,6 +172,11 @@ def player_search(x, y):
 			player_class = item['character']['class']
 			if player_class == int(class_type):
 				print(item['character']['name'] + " " + item['character']['realm'])
+				
+	elif menu_option == '4':
+		data = wowlogs_search(x, y, "3", "", "1849", 0)
+		for item in data ['rankings']:
+			print(item['name'] + " ilvl: " + str(item['itemlevel']))
 				
 	else:
 		for item in data['members']:
@@ -239,13 +271,6 @@ def player_query(p, q):
 	print('Player : ' + player + '\nLevel: ' + player_level + '\nGender: ' + player_gender + '\nRace: ' + player_race + '\nClass: ' + player_class)
 		
 def guild_rank(x, y):
-	api_key = Logs_api
-	region = "US"
-	limit = "5000"
-	url = "https://www.warcraftlogs.com:443/v1/rankings/encounter/"
-
-	x = x.replace(' ', '%20')
-	y = y.replace(' ', '%20')
 	difficulty = ""
 	role = ""
 	encounter = ""
@@ -302,9 +327,7 @@ def guild_rank(x, y):
 	else:
 		role = "dps"
 		
-	final_url = url + encounter + "?metric=" + role + "&difficulty=" + difficulty + "&limit=" + limit + "&guild=" + x + "&server=" + y + "&region=" + region + "&api_key=" + api_key
-	json_obj = urlopen(final_url)
-	data = json.load(json_obj)
+	data = wowlogs_search(x, y, difficulty, role, encounter, 0)
 	
 	for item in data['rankings']:
 		i += 1
@@ -312,6 +335,10 @@ def guild_rank(x, y):
 	
 print('\nWelcome to Guild Management Tool 1.0\n')
 proceed = True
+RGB1 = []
+RGB2 = []
+RGB3 = []
+RGB4 = []
 guild = input('Enter name of guild (exactly as it appears in game): ')
 realmg = input('Enter name of realm (exactly as it appears in game): ')
 
@@ -334,5 +361,8 @@ while proceed:
 		print('-----------------------------------------------------------------------')
 	
 		player_menu_select = player_menu
-		#if(player_menu_select == 1):
+		if player_menu_select == 1:
+			data = wowlogs_search(name, realmp, difficulty, role, encounter, 1)
+			
+			
 		
