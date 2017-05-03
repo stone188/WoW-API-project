@@ -18,8 +18,7 @@ Specifically:
 
 Suggestions for improving the project:
 
-	     The code runs properly and works great! With this taken out, each unit runs and works properly. However, there is no information on whether this project is in Python 2.7 or Python 3.6. Other than this, the code is VERY well organized, everything looks great. However, comments and documentation is virtually non existent outside of the README.md file
- Try adding more comments within the code itself to help the user know what the function does and how it works. Maybe provide some introductory directions before the project begins in the code or in a seperate file. The directions are good, the menus are very clean and easy to read, the code looks AMAZING and CLEAN. Other than the raid.txt file not compiling properly eveything else works properly and looks great!
+The code runs properly and works great! However, there is no information on whether this project is in Python 2.7 or Python 3.6. Other than this, the code is VERY well organized, everything looks great. However, comments and documentation is virtually non existent outside of the README.md file. Try adding more comments within the code itself to help the user know what the function does and how it works. Maybe provide some introductory directions before the project begins in the code or in a seperate file. The directions are good, the menus are very clean and easy to read, the code looks AMAZING and CLEAN. Other than the raid.txt file not compiling properly eveything else works properly and looks great! Don't forget to add the "raid.txt"
 
 
 Based on submitted code 5/3/17
