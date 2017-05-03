@@ -9,3 +9,8 @@ UPDATE:
   - Added Guild rankings based on metrics provided by warlogs
   - Cleaned up menu ui
   - Added several new options which will be available next update
+
+  NEW:
+    - Completed all features
+    - Working on file I/O in order to save raid group status when program exit
+    - Feel free to grade me on the current state of my program, the final feature is more for my own use
