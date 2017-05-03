@@ -11,7 +11,7 @@ On a scale of 1 to 5, I give this code a rating of _3_ based on the following cr
 3  The programs compile and run but the project does not perform correctly and does not produce correct results.
 Specifically:
 
-	Unfortunately, as of right now, the program is missing "raid.txt" which is causing the entire program to not compile. With this taken out, each unit runs and works properly. However, there is no information on whether this project is in Python 2.7 or Python 3.6. Other than this, the code is VERY well organized, everything looks great. However, comments and documentation is vitually non existent outside of the README.md file 
+	Unfortunately, as of right now, the program is missing "raid.txt" which is causing the entire program to not compile. With this taken out, each unit runs and works properly. However, there is no information on whether this project is in Python 2.7 or Python 3.6. The urlopen only works in Python 3.6. Other than this, the code is VERY well organized, everything looks great. However, comments and documentation is vitually non existent outside of the README.md file 
 
 4  The programs compile and produce technically correct results but does not produce the deliverables specified in the documentation for thei submission or is insufficiently documented.
 Specifically:
